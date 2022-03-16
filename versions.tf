@@ -8,13 +8,4 @@ terraform {
   required_version = ">= 1.0"
 }
 
-provider "aws" {
-  # Configuration options
-  default_tags {
-    tags = {
-      Enviroment = var.environment
-      Project    = var.project
-    }
-  }
-  region = var.region
-}
+provider "aws" {}
