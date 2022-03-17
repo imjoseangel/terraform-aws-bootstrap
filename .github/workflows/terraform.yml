@@ -68,11 +68,7 @@ jobs:
           YAML_CONFIG_FILE: .yamllint
 
       # Static code analyzer for Terrascan
-      - name: Terraform Scan Code Base
-        id: terrascan
-        uses: accurics/terrascan-action@v1
+      - name: Run TFSec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.1.0
         with:
-          iac_type: terraform
-          iac_version: v14
-          policy_type: azure
-          only_warn: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
