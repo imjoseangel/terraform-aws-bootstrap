@@ -42,6 +42,12 @@ jobs:
         id: validate
         run: terraform validate
 
+      # Static code analyzer for Terraform
+      - name: Run TFSec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       # Run the tfsec sarif check. Uses static analysis of your terraform templates to spot potential security issues.
       - name: Terraform Security Analysis
         id: tfsec
@@ -64,11 +70,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: devel
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_TERRAFORM: true
+          VALIDATE_TERRAFORM: false
           YAML_CONFIG_FILE: .yamllint
-
-      # Static code analyzer for Terrascan
-      - name: Run TFSec
-        uses: aquasecurity/tfsec-pr-commenter-action@v1.1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
