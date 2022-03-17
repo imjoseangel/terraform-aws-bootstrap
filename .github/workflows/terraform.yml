@@ -70,5 +70,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: devel
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_TERRAFORM: false
+          VALIDATE_TERRAFORM_TERRASCAN: false
           YAML_CONFIG_FILE: .yamllint
