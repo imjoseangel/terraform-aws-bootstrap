@@ -18,7 +18,9 @@ This Terraform module deploys a backend in Amazon Web Services.
 
 ```terraform
 module "bootstrap" {
-  source = "github.com/imjoseangel/terraform-aws-bootstrap"
+  source   = "github.com/imjoseangel/terraform-aws-bootstrap"
+  name     = "terraform-backend"
+  dynamodb = "terraform-lock"
 }
 ```
 
