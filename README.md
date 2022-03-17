@@ -11,7 +11,6 @@ This Terraform module deploys a backend in Amazon Web Services.
 * S3 server-side encryption at rest
 * S3 bucket versioning
 * DynamoDB server-side encryption
-* Multi region support for bucket replication
 * Private Access
 * No cross-account support
 
