@@ -59,7 +59,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 #tfsec:ignore:aws-dynamodb-enable-recovery
 resource "aws_dynamodb_table" "main" {
   name           = var.dynamodb
-  billing_mode   = "PAY_PER_REQUEST"
+  #TODO: billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "LockID"
   read_capacity  = 2
   write_capacity = 2
