@@ -28,6 +28,7 @@ resource "aws_s3_bucket_versioning" "main" {
 }
 
 resource "aws_kms_key" "main" {
+  count                   = var.sse_algorithm == "aws:kms" ? 1 : 0
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
   enable_key_rotation     = true
@@ -38,8 +39,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
 
   rule {
     apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.main.arn
-      sse_algorithm     = "aws:kms"
+      kms_master_key_id = var.sse_algorithm == "aws:kms" ? aws_kms_key.main[0].arn : null
+      sse_algorithm     = var.sse_algorithm
     }
   }
 }
