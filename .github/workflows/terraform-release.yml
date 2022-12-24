@@ -18,7 +18,8 @@ jobs:
 
       - name: Get current tag
         id: currenttag
-        run: echo ::set-output name=tag::"${GITHUB_REF#refs/*/}"
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+        # run: echo ::set-output name=tag::"${GITHUB_REF#refs/*/}"
 
       - name: Create Release
         id: create_release
